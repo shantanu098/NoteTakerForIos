@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var noteStore = NoteStore()
     @State private var searchText = ""
-    
+
     var filteredNotes: [Note] {
         if searchText.isEmpty {
             return noteStore.notes
@@ -14,7 +14,7 @@ struct ContentView: View {
             }
         }
     }
-    
+
     var body: some View {
         NavigationView {
             List {
@@ -38,8 +38,9 @@ struct ContentView: View {
             }
         }
     }
-    
-    func deleteNotes(offsets: IndexSet) {
+
+    private func deleteNotes(at offsets: IndexSet) {
         noteStore.deleteNote(at: offsets)
     }
 }
+
