@@ -17,22 +17,30 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(filteredNotes) { note in
-                    NavigationLink(destination: NoteEditView(note: note, noteStore: noteStore)) {
-                        NoteRowView(note: note)
+            ZStack {
+                Color.black
+                    .ignoresSafeArea() // Full screen black background
+                
+                List {
+                    ForEach(filteredNotes) { note in
+                        NavigationLink(destination: NoteEditView(note: note, noteStore: noteStore)) {
+                            NoteRowView(note: note)
+                                .foregroundColor(.white) // White text for readability
+                        }
                     }
+                    .onDelete(perform: deleteNotes)
                 }
-                .onDelete(perform: deleteNotes)
+                .background(Color.clear) // Transparent to show black background
             }
             .navigationTitle("Notes")
-            .searchable(text: $searchText, prompt: "Search notes...")
+            .searchable(text: $searchText, prompt: "Search Your Notes")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         noteStore.addNote()
                     }) {
                         Image(systemName: "plus")
+                            .foregroundColor(.white) // Plus button in white
                     }
                 }
             }
