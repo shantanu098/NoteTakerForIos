@@ -18,8 +18,8 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.white
-                    .ignoresSafeArea()
+                Color(.systemBackground)
+                        .ignoresSafeArea()
                 
                 List {
                     ForEach(filteredNotes) { note in
@@ -32,7 +32,7 @@ struct ContentView: View {
                 }
                 .background(Color.clear) // Transparent to show black background
             }
-            .navigationTitle("Notes")
+            .navigationTitle("NoteStar")
             .searchable(text: $searchText, prompt: "Search Your Notes")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -46,6 +46,8 @@ struct ContentView: View {
             }
         }
     }
+    
+    
 
     private func deleteNotes(at offsets: IndexSet) {
         noteStore.deleteNote(at: offsets)
