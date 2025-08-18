@@ -18,8 +18,8 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black
-                    .ignoresSafeArea() // Full screen black background
+                Color.white
+                    .ignoresSafeArea()
                 
                 List {
                     ForEach(filteredNotes) { note in
