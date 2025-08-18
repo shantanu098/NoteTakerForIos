@@ -5,10 +5,10 @@ struct NoteRowView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(note.title.isEmpty ? "New Note" : note.title)
+            Text(note.title.isEmpty ? "Add Note here" : note.title)
                 .font(.headline)
                 .lineLimit(1)
-            Text(note.content.isEmpty ? "No additional text" : note.content)
+            Text(note.content.isEmpty ? "Add additional text" : note.content)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .lineLimit(2)
